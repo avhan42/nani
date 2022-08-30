@@ -4,12 +4,13 @@ include("core/fungsi.php");
 
 // cek Jika Tombol Simpan di tekan
 if(isset($_POST['simpan'])){
+    $kd_kriteria = $_POST['kd_kriteria'];
     $nama   = $_POST['nama_kriteria'];
     $attribut   = $_POST['attribut'];
     $bobot  = $_POST['bobot'];
     
     // Input Data ke dalam database
-    saveKriteria($nama,$attribut, $bobot);
+    saveKriteria($kd_kriteria,$nama,$attribut, $bobot);
     header('location: data_kriteria.php');
 }
 
@@ -25,10 +26,11 @@ if(isset($_POST['delete'])){
 // Cek Jika Tombol Edit di tekan 
 if(isset($_POST['edit'])){
     $id = $_POST['id_kriteria'];
+    $kd_kriteria = $_POST['kd_kriteria'];
     $nama = $_POST['nama_kriteria'];
     $attribut = $_POST['attribut'];
     $bobot = $_POST['bobot'];
     // Update record data kriteria
-    updateKriteria($id,$nama,$attribut,$bobot);
+    updateKriteria($id,$kd_kriteria,$nama,$attribut,$bobot);
     header("location: data_kriteria.php"); 
 }

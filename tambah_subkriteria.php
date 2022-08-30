@@ -26,8 +26,8 @@ $query = mysqli_query($con, "SELECT * FROM kriteria");
               <!-- General Form Elements -->
               <form action="fsubkriteria.php" method="post">
               <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kriteria</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-4 col-form-label">Kriteria</label>
+                  <div class="col-sm-8">
                    <select name="kriteria" id="kriteria" class="form-control">
                        <option value="">--Pilih Kriteria--</option>
                         <?php foreach($query as $row):?>
@@ -37,28 +37,22 @@ $query = mysqli_query($con, "SELECT * FROM kriteria");
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Nama Sub Kriteria</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-4 col-form-label">Nama Sub Kriteria</label>
+                  <div class="col-sm-8">
                     <input type="text" name="namasub" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Nilai</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-4 col-form-label">Nilai</label>
+                  <div class="col-sm-8">
                     <input type="text" name="nilai" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Keterangan</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="keterangan" class="form-control">
                   </div>
                 </div>
                 
 
                 <div class="row mb-3">
-                    <div class="col-sm-2"></div>
-                  <div class="col-sm-10">
+                    <div class="col-sm-4"></div>
+                  <div class="col-sm-8">
                     <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                   </div>
                 </div>

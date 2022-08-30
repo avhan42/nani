@@ -2,8 +2,8 @@
 include("template/headers.php");
 include("core/config.php");
 
-// $query = "SELECT * FROM nilai a INNER JOIN kriteria b INNER JOIN guru c INNER JOIN sub_kriteria d WHERE a.id_kriteria=b.id_kriteria AND a.id_guru=c.id_guru AND b.id_kriteria=d.id_kriteria ";
-$query = "SELECT id_nilai, nilai.id_guru,nama_guru,nama_kriteria,nama_subkriteria,nilai.id_kriteria,nilai.id_subkriteria,nilai.nilai,bobot FROM nilai,kriteria,sub_kriteria,guru WHERE nilai.id_kriteria=kriteria.id_kriteria AND nilai.id_subkriteria=sub_kriteria.id_subkriteria AND nilai.id_guru=guru.id_guru;";
+// $query = "SELECT * FROM nilai a INNER JOIN kriteria b INNER JOIN guru c INNER JOIN crips d WHERE a.id_kriteria=b.id_kriteria AND a.id_guru=c.id_guru AND b.id_kriteria=d.id_kriteria ";
+$query = "SELECT * FROM nilai a JOIN guru b, kriteria c WHERE a.id_guru = b.id_guru AND a.id_kriteria = c.id_kriteria";
 $result = mysqli_query($con, $query);
 ?>
 
@@ -30,7 +30,7 @@ $result = mysqli_query($con, $query);
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Kriteria</th>
-                    <th scope="col">Keterangan</th>
+                    <!-- <th scope="col">Keterangan</th> -->
                     <th scope="col">Nilai</th>
                     <th scope="col">Bobot</th>
                     <th scope="col">Action</th>
@@ -44,7 +44,7 @@ $result = mysqli_query($con, $query);
                     <th scope="row"><?= $no++; ?></th>
                     <td><?= $row['nama_guru']; ?></td>
                     <td><?= $row['nama_kriteria']; ?></td>
-                    <td><?= $row['nama_subkriteria']; ?></td>
+                    <!-- <td><?= $row['crips']; ?></td> -->
                     <td><?= $row['nilai']; ?></td>
                     <td><?= $row['bobot']; ?></td>
                     <td>

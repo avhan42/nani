@@ -5,7 +5,7 @@ include("core/fungsi.php");
 
 $query  = "SELECT * FROM kriteria";
 $result = mysqli_query($con,$query);
-$qry = "SELECT * FROM sub_kriteria";
+$qry = "SELECT * FROM crips";
 $query3 = mysqli_query($con,$qry);
 $query2 = "SELECT * FROM guru";
 $res    = mysqli_query($con,$query2);
@@ -51,17 +51,17 @@ $res    = mysqli_query($con,$query2);
                    </select>
                   </div>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                   <label for="inputText" class="col-sm-3 col-form-label">Sub Kriteria</label>
                   <div class="col-sm-9">
                   <select name="subkriteria" id="subkriteria" class="form-control">
                        <option value="">--Pilih Sub Kriteria--</option>
                         <?php foreach($query3 as $row):?>
-                       <option value="<?= $row['id_subkriteria']; ?>"><?= $row['nama_subkriteria'];?></option>
+                       <option value="<?= $row['id_crips']; ?>"><?= $row['crips'];?></option>
                        <?php endforeach; ?>
                    </select>
                   </div>
-                </div>
+                </div> -->
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-3 col-form-label">Nilai</label>
                   <div class="col-sm-9">

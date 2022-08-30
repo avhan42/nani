@@ -25,14 +25,20 @@ include("core/fungsi.php");
               <!-- General Form Elements -->
               <form action="fkriteria.php" method="post">
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kriteria</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Kode Kriteria</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="kd_kriteria" class="form-control" autofocus>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-3 col-form-label">Kriteria</label>
+                  <div class="col-sm-9">
                     <input type="text" name="nama_kriteria" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Attribut</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Attribut</label>
+                  <div class="col-sm-9">
                     <select name="attribut" class="form-control">
                       <option value="">--Pilih Attribut--</option>
                       <option value="benefit">Benefit</option>
@@ -41,8 +47,8 @@ include("core/fungsi.php");
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Bobot</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Bobot</label>
+                  <div class="col-sm-9">
                     <input type="number" name="bobot" class="form-control">
                   </div>
                 </div>

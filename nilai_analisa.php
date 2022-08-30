@@ -16,8 +16,10 @@ foreach($result as $r){
     foreach($result2 as $rr){
         $nilai_n = $rr['nilai_normalisasi'];
 
-        $h = $nilai_n * $bobot;
+        $b = $bobot / 100;
 
+        $h = $nilai_n * $b;
+        // var_dump($h);die();
         $cek = "SELECT * FROM perhitungan WHERE id_guru='$id_k' AND id_kriteria='$id_k' AND nilai_perhitungan='$h' ";
 
         $ck = mysqli_query($con,$cek);

@@ -3,7 +3,8 @@ include("template/headers.php");
 include("core/config.php");
 include("core/fungsi.php");
 
-$query = "SELECT * FROM sub_kriteria,kriteria WHERE sub_kriteria.id_kriteria=kriteria.id_kriteria";
+// $query = "SELECT * FROM sub_kriteria,kriteria WHERE sub_kriteria.id_kriteria=kriteria.id_kriteria";
+$query = "SELECT * FROM crips,kriteria WHERE crips.id_kriteria=kriteria.id_kriteria";
 $result = mysqli_query($con,$query);
 
 
@@ -34,7 +35,6 @@ $result = mysqli_query($con,$query);
                     <th scope="col">Kriteria</th>
                     <th scope="col">Nama Sub Kriteria</th>
                     <th scope="col">Nilai</th>
-                    <th scope="col">Keterangan</th>
                     <th scope="col">Aksi</th>
 
                   </tr>
@@ -47,13 +47,12 @@ $result = mysqli_query($con,$query);
                   <tr>
                     <th scope="row"><?= $no++; ?></th>
                     <td><?= $row['nama_kriteria']; ?></td>
-                    <td><?= $row['nama_subkriteria']; ?></td>
+                    <td><?= $row['crips']; ?></td>
                     <td><?= $row['nilai']; ?></td>
-                    <td><?= $row['keterangan']; ?></td>
                     <td>
                       <form action="fsubkriteria.php" method="post">
-                        <input type="hidden" name="id_subkriteria" value="<?= $row['id_subkriteria']; ?>">
-                        <a href="edit_subkriteria.php?id=<?=$row['id_subkriteria']; ?>" class="btn btn-warning btn-sm " name="edit"><i class="bi bi-pencil"></i></a> | <button  class="btn btn-danger btn-sm" name="delete"><i class="bi bi-trash"></i></button>
+                        <input type="hidden" name="id_crips" value="<?= $row['id_crips']; ?>">
+                        <a href="edit_subkriteria.php?id=<?=$row['id_crips']; ?>" class="btn btn-warning btn-sm " name="edit"><i class="bi bi-pencil"></i></a> | <button  class="btn btn-danger btn-sm" name="delete"><i class="bi bi-trash"></i></button>
                       </form>
                       </td>
                     </tr>

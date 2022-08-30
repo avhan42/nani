@@ -31,6 +31,7 @@ $result = mysqli_query($con,$query);
                 <thead>
                   <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Kode Kriteria</th>
                     <th scope="col">Kriteria</th>
                     <th scope="col">Attribut</th>
                     <th scope="col">Bobot</th>
@@ -44,6 +45,7 @@ $result = mysqli_query($con,$query);
                     ?>
                   <tr>
                     <th scope="row"><?= $no++; ?></th>
+                    <td><?= $row['kd_kriteria']; ?></td>
                     <td><?= $row['nama_kriteria']; ?></td>
                     <td><?= $row['attribut']; ?></td>
                     <td><?= $row['bobot']; ?></td>

@@ -6,7 +6,7 @@ include("core/fungsi.php");
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 
-    $query = mysqli_query($con, "SELECT * FROM sub_kriteria,kriteria WHERE sub_kriteria.id_kriteria=kriteria.id_kriteria AND id_subkriteria=$id ");
+    $query = mysqli_query($con, "SELECT * FROM crips,kriteria WHERE crips.id_kriteria=kriteria.id_kriteria AND id_crips=$id ");
     $query2 = mysqli_query($con, "SELECT * FROM kriteria");
 }
 
@@ -33,8 +33,8 @@ if(isset($_GET['id'])){
               <form action="fsubkriteria.php" method="post">
                   <?php foreach($query as $row):?>
               <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kriteria</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-4 col-form-label">Kriteria</label>
+                  <div class="col-sm-8">
                    <select name="kriteria" id="kriteria" class="form-control">
                        <option value="<?= $row['id_kriteria']; ?>"><?= $row['nama_kriteria']; ?></option>
                         <?php foreach($query2 as $row2): ?>
@@ -44,30 +44,24 @@ if(isset($_GET['id'])){
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Nama Sub Kriteria</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="namasub" class="form-control" value="<?= $row['nama_subkriteria']; ?>">
+                  <label for="inputText" class="col-sm-4 col-form-label">Nama Sub Kriteria</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="namasub" class="form-control" value="<?= $row['crips']; ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Nilai</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-4 col-form-label">Nilai</label>
+                  <div class="col-sm-8">
                     <input type="text" name="nilai" class="form-control" value="<?= $row['nilai']; ?>">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Keterangan</label>
-                  <div class="col-sm-10">
-                      <input type="hidden" name="id_subkriteria" value="<?= $row['id_subkriteria']; ?>">
-                    <input type="text" name="keterangan" class="form-control" value="<?= $row['keterangan']; ?>">
+                    <input type="hidden" name="id" value="<?= $row['id_crips']; ?>">
                   </div>
                 </div>
                        
                 <?php endforeach; ?>
 
                 <div class="row mb-3">
-                    <div class="col-sm-2"></div>
-                  <div class="col-sm-10">
+                    <div class="col-sm-4"></div>
+                  <div class="col-sm-8">
                     <button type="submit" class="btn btn-primary" name="edit">Update</button>
                   </div>
                 </div>

@@ -1,9 +1,9 @@
 <?php 
 
 // Menambah Data Kriteria
-function saveKriteria($nama,$attribut,$bobot){
+function saveKriteria($kd_kriteria,$nama,$attribut,$bobot){
     include("config.php");
-    $query = "INSERT INTO kriteria (nama_kriteria,attribut,bobot) VALUES ('$nama','$attribut','$bobot') ";
+    $query = "INSERT INTO kriteria (kd_kriteria,nama_kriteria,attribut,bobot) VALUES ('$kd_kriteria','$nama','$attribut','$bobot') ";
     $save = mysqli_query($con,$query);
     
     if(!$save){
@@ -21,10 +21,10 @@ function delKriteria($id){
 }
 
 // Mengupdate Data Kriteria
-function updateKriteria($id,$nama,$attribut,$bobot){
+function updateKriteria($id,$kd_kriteria,$nama,$attribut,$bobot){
     include("config.php");
     // Update record Kriteria
-    $query = "UPDATE kriteria SET nama_kriteria='$nama', attribut='$attribut', bobot='$bobot' WHERE id_kriteria='$id' ";
+    $query = "UPDATE kriteria SET kd_kriteria='$kd_kriteria', nama_kriteria='$nama', attribut='$attribut', bobot='$bobot' WHERE id_kriteria='$id' ";
     mysqli_query($con, $query);
 }
 
@@ -51,17 +51,17 @@ function deleteGuru($id){
     mysqli_query($con,$query);
 }
 // Simpan Nilai Guru
-function saveNilai($nama,$kriteria,$sub,$nilai){
+function saveNilai($nama,$kriteria,$nilai){
     include("config.php");
     // Simpan Record Data Nilai
-    $query = "INSERT INTO nilai (id_guru,id_kriteria,id_subkriteria,nilai) VALUES ('$nama','$kriteria','$sub','$nilai')";
+    $query = "INSERT INTO nilai (id_guru,id_kriteria,nilai) VALUES ('$nama','$kriteria','$nilai')";
     mysqli_query($con,$query);
 }
 // Update Nilai Guru
-function updateNilai($id,$nama,$kriteria,$sub,$nilai){
+function updateNilai($id,$nama,$kriteria,$nilai){
     include("config.php");
     // Update Record Data Nilai
-    $query = "UPDATE nilai SET id_guru='$nama',id_kriteria='$kriteria',id_subkriteria='$sub',nilai='$nilai' WHERE id_nilai=$id ";
+    $query = "UPDATE nilai SET id_guru='$nama',id_kriteria='$kriteria',nilai='$nilai' WHERE id_nilai=$id ";
     mysqli_query($con,$query);
 }
 // Hapus Nilai Guru
@@ -78,22 +78,23 @@ function saveRangking($id_g,$rank){
     $query = "INSERT INTO rangking (id_guru,nilai_rangking) VALUES ('$id_g','$rank')";
     mysqli_query($con,$query);
 }
-function saveSubKriteria($kriteria,$namasub,$nilai,$ket)
+function saveSubKriteria($kriteria,$namasub,$nilai)
 {
     include("config.php");
-    $query = "INSERT INTO sub_kriteria (id_kriteria,nama_subkriteria,nilai,keterangan) VALUES ('$kriteria','$namasub','$nilai','$ket')";
+    // $query = "INSERT INTO crips (id_cirps,id_kriteria,crips,nilai) VALUES (NULL, '$kriteria','$namasub','$nilai')";
+    $query = "INSERT INTO crips (id_kriteria,crips,nilai) VALUES ('$kriteria','$namasub','$nilai')  ";
     mysqli_query($con, $query);
 }
-function  updateSubKriteria($id,$kriteria,$namasub,$nilai,$ket)
+function  updateSubKriteria($id,$kriteria,$namasub,$nilai)
 {
     include("config.php");
 
-    $query = "UPDATE sub_kriteria SET id_kriteria='$kriteria', nama_subkriteria='$namasub',nilai='$nilai',keterangan='$ket' WHERE id_subkriteria=$id ";
+    $query = "UPDATE crips SET id_kriteria='$kriteria', crips='$namasub',nilai='$nilai' WHERE id_crips=$id ";
     mysqli_query($con, $query);
 }
 function delSubKriteria($id)
 {
     include('config.php');
-    $query = "DELETE FROM sub_kriteria WHERE id_subkriteria=$id ";
+    $query = "DELETE FROM crips WHERE id_crips=$id ";
     mysqli_query($con,$query);
 }

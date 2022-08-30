@@ -28,7 +28,7 @@ foreach($result as $res){
                 $min    = mysqli_query($con,$query4);
                 foreach($min as $mi){
 
-                    $nilai_normalisasi = number_format($mi['hasilmax'] / $nil['nilai'],2);
+                    $nilai_normalisasi = number_format($nil['nilai'] / $mi['hasilmax'],2);
                 }
             }
 

@@ -4,7 +4,7 @@ include("core/fungsi.php");
 include("template/headers.php");
 
 
-$query = "SELECT DISTINCT kriteria.nama_kriteria FROM nilai,kriteria WHERE nilai.id_kriteria=kriteria.id_kriteria";
+$query = "SELECT DISTINCT kd_kriteria,kriteria.nama_kriteria FROM nilai,kriteria WHERE nilai.id_kriteria=kriteria.id_kriteria";
 $result = mysqli_query($con,$query);
 
 $query2   = "SELECT * FROM guru";
@@ -20,39 +20,7 @@ $result2  = mysqli_query($con,$query2);
     </div><!-- End Page Title -->
 
     <section>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Tabel Nilai Kriteria</h5>
-          <table class="table table-bordered border-primary">
-            <thead>
-              <tr>
-                <th>Nama Guru</th>
-                <?php 
-                    foreach($result as $row){
-                    ?>
-                    <th scope="col"><?= $row['nama_kriteria']; ?></th>
-                    <?php } ?>
-              </tr>
-            </thead>
-            <tbody>
-                  <?php foreach($result2 as $rw): ?>
-                  <tr>
-                    <td scope="row"><?= $rw['nama_guru'];?></td>
-                    <?php 
-                    $id = $rw['id_guru'];
-                    $qry = "SELECT DISTINCT sub_kriteria.nama_subkriteria,nilai.nilai FROM nilai,sub_kriteria WHERE nilai.id_subkriteria=sub_kriteria.id_subkriteria AND nilai.id_guru='$id'";
-                    $res = mysqli_query($con,$qry);
-                      foreach($res as $rr){ ?>
-                      <td><?= $rr['nama_subkriteria']; ?></td>
-                      <?php } ?>
-                   
-                  </tr>
-                  <?php endforeach; ?>
-                  
-                </tbody>
-          </table>
-        </div>
-      </div>
+      
     <div class="card">
             <div class="card-body">
               <h5 class="card-title">Tabel Nilai Kriteria</h5>
@@ -65,7 +33,7 @@ $result2  = mysqli_query($con,$query2);
                     <?php 
                     foreach($result as $row){
                     ?>
-                    <th scope="col"><?= $row['nama_kriteria']; ?></th>
+                    <th scope="col"><?= $row['kd_kriteria']; ?></th>
                     <?php } ?>
                   </tr>
                 </thead>
@@ -107,8 +75,9 @@ $result2  = mysqli_query($con,$query2);
                     <?php 
                     foreach($result as $row){
                     ?>
-                    <th scope="col"><?= $row['nama_kriteria']; ?></th>
+                    <th scope="col"><?= $row['kd_kriteria']; ?></th>
                     <?php } ?>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -119,10 +88,10 @@ $result2  = mysqli_query($con,$query2);
                     $id = $rw['id_guru'];
                     $qry = "SELECT DISTINCT kriteria.nama_kriteria,normalisasi.nilai_normalisasi FROM normalisasi,kriteria WHERE normalisasi.id_kriteria=kriteria.id_kriteria AND normalisasi.id_guru='$id'";
                     $res = mysqli_query($con,$qry);
-                      foreach($res as $rr){ ?>
+                      foreach($res as $rr){ 
+                        ?>
                       <td><?= $rr['nilai_normalisasi']; ?></td>
                       <?php } ?>
-                   
                   </tr>
                   <?php endforeach; ?>
                   
@@ -151,7 +120,7 @@ $result2  = mysqli_query($con,$query2);
                     <?php 
                     foreach($result as $row){
                     ?>
-                    <th scope="col"><?= $row['nama_kriteria']; ?></th>
+                    <th scope="col"><?= $row['kd_kriteria']; ?></th>
                     <?php } ?>
                     <th scope="col">Total</th>
                   </tr>
@@ -167,7 +136,7 @@ $result2  = mysqli_query($con,$query2);
                     $res = mysqli_query($con,$qry);
 
                       foreach($res as $rr){ ?>
-                      <td><?= $rr['nilai_perhitungan']; ?></td>
+                      <td><?= number_format($rr['nilai_perhitungan'],2); ?></td>
                       <?php } ?>
                       <td>
                        <?php 
@@ -177,7 +146,7 @@ $result2  = mysqli_query($con,$query2);
                         foreach($ck as $cek){
                           $id_g = $cek['id_guru'];
                           $rank = $cek['total'];
-                        // echo $cek['total'];
+                        echo number_format($cek['total'],3);
                         
                       }
                       $qry3 = "SELECT DISTINCT id_guru,nilai_rangking FROM rangking WHERE id_guru = '$id_g'";

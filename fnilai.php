@@ -6,10 +6,11 @@ include("core/fungsi.php");
 if(isset($_POST['simpan'])){
     $nama       = $_POST['nama_guru'];
     $kriteria   = $_POST['kriteria'];
-    $sub        = $_POST['subkriteria'];
+    // $sub        = $_POST['subkriteria'];
     $nilai      = $_POST['nilai'];
+
     // Simpan data nilai 
-    saveNilai($nama,$kriteria,$sub,$nilai);
+    saveNilai($nama,$kriteria,$nilai);
     header("location: nilai_guru.php");
 }
 // Jika Tombol update di klik

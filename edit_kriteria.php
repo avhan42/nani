@@ -32,15 +32,22 @@ if(isset($_GET['id'])){
               <form action="fkriteria.php" method="post">
                   <?php foreach($result as $row): ?>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kriteria</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Kode Kriteria</label>
+                  <div class="col-sm-9">
+                      <input type="hidden" name="id_kriteria" value="<?= $row['id_kriteria']; ?>">
+                    <input type="text" name="kd_kriteria" class="form-control" value="<?= $row['kd_kriteria']; ?>">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-3 col-form-label">Kriteria</label>
+                  <div class="col-sm-9">
                       <input type="hidden" name="id_kriteria" value="<?= $row['id_kriteria']; ?>">
                     <input type="text" name="nama_kriteria" class="form-control" value="<?= $row['nama_kriteria']; ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Attribut</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Attribut</label>
+                  <div class="col-sm-9">
                       <select name="attribut" class="form-control">
                         <option value="<?= $row['attribut']; ?>"><?= $row['attribut']; ?></option>
                         <option value="benefit">Benefit</option>
@@ -49,8 +56,8 @@ if(isset($_GET['id'])){
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Bobot</label>
-                  <div class="col-sm-10">
+                  <label for="inputText" class="col-sm-3 col-form-label">Bobot</label>
+                  <div class="col-sm-9">
                     <input type="number" name="bobot" value="<?= $row['bobot']; ?>" class="form-control">
                   </div>
                 </div>
